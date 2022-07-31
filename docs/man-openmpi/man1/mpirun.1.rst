@@ -1211,7 +1211,7 @@ Note that only logicical processor locations are supported. By default, the valu
 If the binding specification overlaps between any two ranks then an error occurs. If you intend to allow processes to share the same logical processing unit then you must pass the ``--bind-to :overload-allowed`` command line option to tell the runtime to ignore this check.
 
 The hostnames listed above are "absolute," meaning that actual
-resolveable hostnames are specified.  However, hostnames can also be
+resolvable hostnames are specified.  However, hostnames can also be
 specified as "relative," meaning that they are specified in relation
 to an externally-specified list of hostnames (e.g., by ``mpirun``'s
 ``--host`` argument, a hostfile, or a job scheduler).

@@ -157,9 +157,9 @@ defines all nine levels:
 #. Basic information required for application tuners.
 #. Detailed information required for application tuners.
 #. All remaining information required for application tuners.
-#. Basic information for Open MPI implementors.
-#. Detailed information for Open MPI implementors.
-#. All remaining information for Open MPI implementors.
+#. Basic information for Open MPI implementers.
+#. Detailed information for Open MPI implementers.
+#. All remaining information for Open MPI implementers.
 
 By default, ``ompi_info`` only shows level 1 MCA parameters. To see
 more MCA parameters, use the ``--level`` command line option.
