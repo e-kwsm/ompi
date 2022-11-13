@@ -35,7 +35,7 @@ opal_show_subtitle "MPI layer configuration options"
 #
 AC_ARG_ENABLE([mpi],
   [AS_HELP_STRING([--disable-mpi],
-     [Disable building the MPI layer (default:enabled)])])
+     [Disable building the MPI layer (default: enabled)])])
 
 #
 # Do we want to enable MPI interface warnings (e.g. deprecated
@@ -66,7 +66,7 @@ AC_DEFINE_UNQUOTED([OMPI_WANT_MPI_INTERFACE_WARNING], [$OMPI_WANT_MPI_INTERFACE_
 AC_MSG_CHECKING([if want sparse process groups])
 AC_ARG_ENABLE([sparse-groups],
     [AS_HELP_STRING([--enable-sparse-groups],
-                   [enable sparse process groups (default: not enabled)])])
+                   [enable sparse process groups (default: disabled)])])
 if test "$enable_sparse_groups" = "yes"; then
     AC_MSG_RESULT([yes])
     GROUP_SPARSE=1
