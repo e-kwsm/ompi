@@ -434,7 +434,7 @@ main (November 2018).
 * Bugfixes:
 
   * Correct the behavior of process placement during an MPI_COMM_SPAWN
-    when some slots were occcupied by failed processes.
+    when some slots were occupied by failed processes.
   * MPI_COMM_SPAWN accepts process placement directives in the Info object.
   * Fixed deadlocks in some NBC collective operations.
   * Crashes and deadlocks in MPI_FINALIZE have been resolved.
