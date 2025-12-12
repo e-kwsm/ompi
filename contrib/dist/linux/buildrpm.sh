@@ -216,7 +216,7 @@ echo "--> Found tarball: $tarball"
 # get the extension from the tarball (gz or bz2)
 #
 
-extension=`echo $tarball | egrep '\.bz2'`
+extension=$(echo $tarball | egrep '\.bz2')
 if test -n "$extension"; then
     extension=bz2
 else
@@ -227,8 +227,8 @@ fi
 # Get the version number
 #
 
-first="`basename $tarball | cut -d- -f2`"
-version="`echo $first | sed -e 's/\.tar\.'$extension'//'`"
+first="$(basename $tarball | cut -d- -f2)"
+version="$(echo $first | sed -e 's/\.tar\.'$extension'//')"
 unset first
 echo "--> Found Open MPI version: $version"
 
@@ -279,7 +279,7 @@ fi
 if test "$rpmtopdir" == ""; then
     file=~/.rpmmacros
     if test -r $file; then
-        rpmtopdir=${rpmtopdir:-"`grep %_topdir $file | awk '{ print $2 }'`"}
+        rpmtopdir=${rpmtopdir:-"$(grep %_topdir $file | awk '{ print $2 }')"}
     fi
 fi
 
@@ -317,7 +317,7 @@ echo "--> Found RPM top dir: $rpmtopdir"
 # If we're not root, try to sudo
 #
 
-if test "$need_root" = "1" -a "`whoami`" != "root"; then
+if test "$need_root" = "1" -a "$(whoami)" != "root"; then
     echo "--> Trying to sudo: \"$0 $orig_param\""
     echo "------------------------------------------------------------"
     sudo -u root sh -c "$0 $orig_param"
@@ -377,7 +377,7 @@ sed -e 's/\$VERSION/'$version'/g' \
     -e 's/\$EXTENSION/'$extension'/g' \
     $specfile > "$specdest"
 echo "--> Created destination specfile: $specdest"
-release=`egrep -i release: $specdest | cut -d\  -f2`
+release=$(egrep -i release: $specdest | cut -d\  -f2)
 
 #
 # Setup compiler string
