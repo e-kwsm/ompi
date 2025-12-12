@@ -286,7 +286,7 @@ function do_analysis() {
   local outfile1="${3}.1"
   local resultfile=${testdir}/${nodes}x${ppn}_result.log
 
-  if [ ! -e $tesdir ]; then
+  if [ ! -e $testdir ]; then
     do_err "can not find testdir: $testdir"
   fi
   if [ -z $basefile -o ! -f $basefile ]; then
