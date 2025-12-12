@@ -114,7 +114,7 @@ system.
               and run with |prte_min_version|, you will not get a
               fully-populated ``mpirun(1)`` man page.
 
-              The Open MPI community generally recomends using the
+              The Open MPI community generally recommends using the
               latest available version of PRRTE unless there is a
               specific reason not to.
 
