@@ -1,7 +1,7 @@
 .. _developers-installing-autotools-label:
 
-Manually installing the GNU Autootools
-======================================
+Manually installing the GNU Autotools
+=====================================
 
 There is enough detail in building the GNU Autotools that it warrants
 its own section.
