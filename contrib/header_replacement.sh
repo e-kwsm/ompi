@@ -31,7 +31,7 @@ function add_header_first()
 {
     file=$1                               # File to add header to
     header=$2                             # E.g. opal/util/output.h for #include "opal/util/output.h"
-    line=`grep -n "#include " $file | cut -f1 -d':' | head -n1`
+    line=$(grep -n "#include " $file | cut -f1 -d':' | head -n1)
 
     # check if this is a header wrapped in #ifdef HAVE_LALALA_H, if so, add before #if or #ifdef
     prev_line=$(($line - 1))
@@ -51,20 +51,20 @@ function add_header()
     file=$1                               # File to add header to
     header=$2                             # E.g. opal/util/output.h for #include "opal/util/output.h"
     after_header_pattern=$3               # Add after occurrences of pattern, e.g. opal/util
-    line=`grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1`
+    line=$(grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1)
     if [ $# -gt 3 -a "x$line" = "x" ] ; then
         after_header_pattern=$4           # If above pattern is not found, try more generic, e.g. opal/
-        line=`grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1`
+        line=$(grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1)
 
         # If we have a final even more general pattern to search for...
         if [ $# -eq 5 -a "x$line" = "x" ] ; then
             after_header_pattern=$5       # If above pattern is not found, try even more generic, e.g. opal/
-            line=`grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1`
+            line=$(grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1)
         fi
         # If still not found, go for plain '#include "'
         if [ "x$line" = "x" ] ; then
             echo Can neither find pattern $3 nor pattern $4 in file $file -- will include after the first include
-            line=`grep -n "#include \"" $file | cut -f1 -d':' | head -n1`
+            line=$(grep -n "#include \"" $file | cut -f1 -d':' | head -n1)
             if [ "x$line" = "x" ] ; then
                 echo REAL ERROR -- NO INCLUDES AT ALL. INCLUDE MANUALLY
                 return
@@ -87,8 +87,8 @@ function add_header()
 function del_header()
 {
     file=$1
-    header=`echo $2 | sed 's/\//\\\\\//g'`
-    line=`grep -n "#include \"$2" $file | cut -f1 -d':' | head -n1`
+    header=$(echo $2 | sed 's/\//\\\\\//g')
+    line=$(grep -n "#include \"$2" $file | cut -f1 -d':' | head -n1)
 
     if [ "x$line" = "x" ] ; then
         echo Can not find pattern $header file $file -- will not delete
@@ -102,7 +102,7 @@ function del_header()
 SEARCH_HEADER=show_help.h
 
 # Search for all source files with show_help.h in it.
-for i in `find . -type f '(' -name '*.[cChysSfF]' -o -iname '*.cc' -o -name '*.cpp' -o -name '*.[fF]77' -o -name '*.[fF]90' ')' | sort | xargs grep -n $SEARCH_HEADER | cut -f1 -d':' | sort | uniq` ; do
+for i in $(find . -type f '(' -name '*.[cChysSfF]' -o -iname '*.cc' -o -name '*.cpp' -o -name '*.[fF]77' -o -name '*.[fF]90' ')' | sort | xargs grep -n $SEARCH_HEADER | cut -f1 -d':' | sort | uniq) ; do
     # Now we do know that we have orte/util/show_help.h
     found_orte_show_help_h=1
     need_orte_show_help_h=0
