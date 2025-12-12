@@ -25,7 +25,7 @@ del_header()
     header=$(echo $2 | sed 's/\//\\\\\//g')
     line=$(grep -n "#include \"$2" $file | cut -f1 -d':' | head -n1)
 
-    if [ "x$line" = "x" ] ; then
+    if [ -z "$line" ] ; then
         echo Can not find pattern $header file $file -- will not delete
         return
     fi
