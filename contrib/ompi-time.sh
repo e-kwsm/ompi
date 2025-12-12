@@ -406,7 +406,7 @@ ppn=${ppn:=1}
 mpioptions=' -novm -mca btl_openib_warn_default_gid_prefix 0 -mca mpi_add_procs_cutoff 100000 '
 slurmoptions=' OMPI_MCA_btl_openib_warn_default_gid_prefix=0 OMPI_MCA_mpi_add_procs_cutoff=100000 '
 
-if [ -z "$(env | grep SLURM)" ]; then
+if ! env | grep -q SLURM; then
   do_err "Do not see allocated nodes by SLURM. Probably salloc -N option is not set"
 fi
 
