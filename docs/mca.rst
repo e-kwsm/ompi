@@ -738,7 +738,7 @@ but may be removed in future releases.
         / rank / stdout / stderr / stdddiag.
       - ``orte_output_filename``
 
-        Value: ``<filenname>``
+        Value: ``<filename>``
       - ``output``
 
         Value: ``file=<filename>``
