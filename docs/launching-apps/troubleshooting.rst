@@ -181,7 +181,7 @@ them across multiple hosts, try the following:
    :ref:`this section <running-prerequisites-label>` for
    the correct values.  Keep in mind that it is fine to have multiple
    Open MPI installations installed on a machine; the *first* Open MPI
-   installation found by ``PATH`` and ``LD_LIBARY_PATH`` is the one
+   installation found by ``PATH`` and ``LD_LIBRARY_PATH`` is the one
    that matters.
 
 #. Run a simple, non-MPI job across multiple hosts.  This verifies
