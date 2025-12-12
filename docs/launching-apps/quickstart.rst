@@ -173,7 +173,7 @@ Using Open MPI's :ref:`mpirun(1) <man1-mpirun>`
 .. note:: Technically, Open MPI's :ref:`mpirun(1) <man1-mpirun>` is a
           thin layer around the PRRTE ``prun``.  Hence, most of the
           functionality described here is really about ``prun``.  For
-          simplicity, however, this docmentation will describe
+          simplicity, however, this documentation will describe
           everything in terms of ``mpirun``.
 
 When using the full-featured :ref:`mpirun(1) <man1-mpirun>` in a
