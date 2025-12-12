@@ -190,11 +190,11 @@ mpi_ft_foo <value>`` for Open MPI options, and with ``--prtemca
 errmgr_detector_bar <value>`` for PRTE options.
 
 .. important:: The main control for enabling/disabling fault tolerance
-   at runtime is the ``--with-ft ulfm`` (or its synomym ``--with-ft mpi``)
+   at runtime is the ``--with-ft ulfm`` (or its synonym ``--with-ft mpi``)
    ``mpirun`` CLI option. This option sets up multiple subsystems in
    Open MPI to enable fault tolerance. The options described below are
    best used to override the default behavior after the ``--with-ft ulfm``
-   opion is used.
+   option is used.
 
 PRTE level options
 ~~~~~~~~~~~~~~~~~~
@@ -305,7 +305,7 @@ three classifications:
    after a failure.
 3. **Disabled:** This framework/component will cause unspecified behavior when
    fault tolerance is enabled. As a consequence, it will be disabled when the
-   ``--with-ft ulfm`` option is used (see above for defails about implicit
+   ``--with-ft ulfm`` option is used (see above for details about implicit
    parameters loaded from the ``ft-mpi`` aggregate param file).
 
 Any framework or component not listed below are categorized as **Unmodified**,
@@ -371,7 +371,7 @@ ULFM Integrated in Open MPI
 
 As of |ompi_ver|, ULFM is now integrated directly in to the community
 release of Open MPI.  The following sections describe previous ULFM
-standlone releases.
+standalone releases.
 
 ULFM Standalone Release 4.0.2u1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
