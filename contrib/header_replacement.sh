@@ -52,17 +52,17 @@ add_header()
     header=$2                             # E.g. opal/util/output.h for #include "opal/util/output.h"
     after_header_pattern=$3               # Add after occurrences of pattern, e.g. opal/util
     line=$(grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1)
-    if [ $# -gt 3 ] && [ "x$line" = "x" ] ; then
+    if [ $# -gt 3 ] && [ -z "$line" ] ; then
         after_header_pattern=$4           # If above pattern is not found, try more generic, e.g. opal/
         line=$(grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1)
 
         # If we have a final even more general pattern to search for...
-        if [ $# -eq 5 ] && [ "x$line" = "x" ] ; then
+        if [ $# -eq 5 ] && [ -z "$line" ] ; then
             after_header_pattern=$5       # If above pattern is not found, try even more generic, e.g. opal/
             line=$(grep -n "#include \"$after_header_pattern" $file | cut -f1 -d':' | head -n1)
         fi
         # If still not found, go for plain '#include "'
-        if [ "x$line" = "x" ] ; then
+        if [ -z "$line" ] ; then
             echo Can neither find pattern $3 nor pattern $4 in file $file -- will include after the first include
             line=$(grep -n "#include \"" $file | cut -f1 -d':' | head -n1)
             if [ "x$line" = "x" ] ; then
