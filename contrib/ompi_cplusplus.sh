@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Change all occurrences of #if defined(c_plusplus) and variations
 # to BEGIN_C_DECLS and END_C_DECLS using sed.
