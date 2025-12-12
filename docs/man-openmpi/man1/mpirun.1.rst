@@ -1230,7 +1230,7 @@ hostnames, indexed from 0.  For example:
 
 All package/core slot locations are specified as logical indexes.
 
-.. note:: The Open MPI v1.6 series used physical indexes. Starting in Open MPI v5.0 only logicial indexes are supported and the ``rmaps_rank_file_physical`` MCA parameter is no longer recognized.
+.. note:: The Open MPI v1.6 series used physical indexes. Starting in Open MPI v5.0 only logical indexes are supported and the ``rmaps_rank_file_physical`` MCA parameter is no longer recognized.
 
 You can use tools such as Hwloc's `lstopo(1)` to find the logical
 indexes of package and cores.
