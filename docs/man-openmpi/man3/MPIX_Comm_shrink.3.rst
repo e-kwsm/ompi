@@ -75,7 +75,7 @@ DESCRIPTION
 
 This collective operation creates a new intra- or intercommunicator
 *newcomm* from the intra- or intercommunicator *comm*, respectively, by
-excluding the group of failed MPI processes as shrinkd upon during the
+excluding the group of failed MPI processes as shrunk upon during the
 operation.
 
 The groups of *newcomm* must include every MPI process that returns from
