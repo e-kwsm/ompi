@@ -29,7 +29,7 @@ system.
               compared to later versions.
 
               Other than the Hwloc restriction about v3.0.0 and beyond
-              (see below), the Open MPI community generally recomends
+              (see below), the Open MPI community generally recommends
               using the latest available version of Hwloc unless there
               is a specific reason not to.
 
@@ -88,7 +88,7 @@ system.
               may still have bugs and/or have less functionality as
               compared to later versions.
 
-              The Open MPI community generally recomends using the
+              The Open MPI community generally recommends using the
               latest available version of OpenPMIx unless there is a
               specific reason not to.
 
