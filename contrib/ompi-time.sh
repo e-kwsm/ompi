@@ -219,7 +219,7 @@ function do_checksync_mpisync() {
   do_msg "sync drift is equal: $diff"
   diff=$(echo $diff | cut -f3 -d' ')
   status=$(if (( $(bc <<< "$diff >= 0.001") == 1 )); then echo "value $diff >= 0.001"; fi)
-  if [ -n "$status" ] && [ -n "$verbose" -a "$verbose" == "on" ]; then
+  if [ -n "$status" ] && [ -n "$verbose" ] && [ "$verbose" == "on" ]; then
     do_err "mpisync reports issue with synchronization as $status"
   else
     do_msg "Warning: mpiperf reports issue with synchronization as $status"
@@ -253,7 +253,7 @@ function do_checksync_mpiperf() {
   do_msg "Analysing ${syncfile}"
   cat ${syncfile} >> $logfile 2>&1
   status=$(grep -v '^#' ${syncfile} | awk -F ' ' '{ print $6 }' | while read -r i; do if (( $(bc <<< "$i >= 1") == 1 )); then echo "value $i >= 1.00"; break; fi; done)
-  if [ -n "$status" ] && [ -n "$verbose" -a "$verbose" == "on" ]; then
+  if [ -n "$status" ] && [ -n "$verbose" ] && [ "$verbose" == "on" ]; then
     do_err "mpiperf reports issue with synchronization as $status"
   else
     do_msg "Warning: mpiperf reports issue with synchronization as $status"
@@ -289,10 +289,10 @@ function do_analysis() {
   if [ ! -e $testdir ]; then
     do_err "can not find testdir: $testdir"
   fi
-  if [ -z $basefile -o ! -f $basefile ]; then
+  if [ -z $basefile ] || ! [ -f $basefile ]; then
     do_err "can not find basefile: $basefile"
   fi
-  if [ -z $outfile -o ! -f $outfile ]; then
+  if [ -z $outfile ] || ! [ -f $outfile ]; then
     do_err "can not find outfile: $outfile"
   fi
   if [ "$(cat $outfile | wc -l)" != "$(($nodes * $ppn))" ]; then
@@ -310,7 +310,7 @@ function do_analysis() {
     local v1=$(echo $line | cut -f1 -d' ')
     local v2=0
 
-    if [ ! -z $syncfile -o -f $syncfile ]; then
+    if [ ! -z $syncfile ] || [ -f $syncfile ]; then
       v2=$(echo "scale=2; ($(grep $n $syncfile | cut -f3 -d' ') * 1000000)" | bc -l)
       # Round float value to int
       v2=$(echo ${v2%%.*})
@@ -322,7 +322,7 @@ function do_analysis() {
   # Find maximum and minimum lines
   min_line=$(sort -n $outfile1 | head -n1)
   max_line=$(sort -n $outfile1 | tail -n1)
-  if [ -z "$min_line" -o -z "$max_line" ]; then
+  if [ -z "$min_line" ] || [ -z "$max_line" ]; then
     do_err "can not find max/min lines in : $outfile1"
   fi
   min_t=$( echo "$min_line" | cut -f1 -d$'\t')
@@ -340,7 +340,7 @@ function do_report() {
   local resultfile=$2
   local reportfile=${testdir}/report.log
 
-  if [ -z $resultfile -o ! -f $resultfile ]; then
+  if [ -z $resultfile ] || ! [ -f $resultfile ]; then
     do_err "can not find resultfile: $resultfile"
   fi
   min_t=$(awk -F $'\t' '{ if (NR == 1) print $1 }' $resultfile)

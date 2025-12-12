@@ -107,7 +107,7 @@ echo "--> Found RPM top dir: $rpmtopdir"
 # If we need root and are not root, try to sudo
 #
 
-if test "$need_root" = "1" -a "$(whoami)" != "root"; then
+if test "$need_root" = "1" && test "$(whoami)" != "root"; then
     echo "--> Trying to sudo: \"$0 $*\""
     echo "------------------------------------------------------------"
     sudo -u root sh -c "$0 $tarball"
