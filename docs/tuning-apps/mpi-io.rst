@@ -72,7 +72,7 @@ mechanism available in Open MPI to influence a parameter value, e.g.:
 ``fs`` and ``fbtl`` components are typically chosen based on the file
 system type utilized (e.g. the ``lustre``
 component is chosen for Lustre file systems, etc.). The ``ufs`` ``fs``
-component is used if no file system specific component is availabe
+component is used if no file system specific component is available
 (e.g. local file systems, NFS, BeefFS, etc.), and the ``posix``
 ``fbtl`` component is used as the default component for read/write
 operations.
