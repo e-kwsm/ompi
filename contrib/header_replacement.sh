@@ -27,7 +27,7 @@
 # Checks for #if  to do the right thing, but does not handle
 # single-line or (even harder) multi-line comments
 #
-function add_header_first()
+add_header_first()
 {
     file=$1                               # File to add header to
     header=$2                             # E.g. opal/util/output.h for #include "opal/util/output.h"
@@ -46,7 +46,7 @@ function add_header_first()
 }
 
 
-function add_header()
+add_header()
 {
     file=$1                               # File to add header to
     header=$2                             # E.g. opal/util/output.h for #include "opal/util/output.h"
