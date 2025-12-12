@@ -19,7 +19,7 @@
 # Find certain unnecessary headers, and remove, if not used...
 #
 
-function del_header()
+del_header()
 {
     file=$1
     header=$(echo $2 | sed 's/\//\\\\\//g')
@@ -45,7 +45,7 @@ function del_header()
 #
 # XXX Dont ask, why it does NOT take the SEARCH_HEADER as parameter -- seems not to work with arrays
 #
-function delete_unnessary_header()
+delete_unnessary_header()
 {
     DIR=$1
     i=0
