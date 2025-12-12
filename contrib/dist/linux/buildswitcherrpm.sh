@@ -51,11 +51,11 @@ fi
 # Get the version number...
 #
 
-first="`basename $tarball | cut -d- -f2`"
-if test "`echo $first | fgrep .tar.gz`" != ""; then
-    version="`echo $first | sed -e 's/\.tar\.gz//'`"
-elif test "`echo $first | fgrep .tar.bz2`" != ""; then
-    version="`echo $first | sed -e 's/\.tar\.bz2//'`"
+first="$(basename $tarball | cut -d- -f2)"
+if test "$(echo $first | fgrep .tar.gz)" != ""; then
+    version="$(echo $first | sed -e 's/\.tar\.gz//')"
+elif test "$(echo $first | fgrep .tar.bz2)" != ""; then
+    version="$(echo $first | sed -e 's/\.tar\.bz2//')"
 else
     echo Unable to determine version number from filename
     echo This script only supports .tar.gz and .tar.bz2 filenames
@@ -78,7 +78,7 @@ echo "--> Found specfile: $specfile"
 # Find where the top RPM-building directory is
 #
 
-rpmtopdir="`grep %_topdir $HOME/.rpmmacros | awk '{ print $2 }'`"
+rpmtopdir="$(grep %_topdir $HOME/.rpmmacros | awk '{ print $2 }')"
 if test "$rpmtopdir" != ""; then
     if test ! -d "$rpmtopdir"; then
 	mkdir -p "$rpmtopdir"
@@ -107,7 +107,7 @@ echo "--> Found RPM top dir: $rpmtopdir"
 # If we need root and are not root, try to sudo
 #
 
-if test "$need_root" = "1" -a "`whoami`" != "root"; then
+if test "$need_root" = "1" -a "$(whoami)" != "root"; then
     echo "--> Trying to sudo: \"$0 $*\""
     echo "------------------------------------------------------------"
     sudo -u root sh -c "$0 $tarball"

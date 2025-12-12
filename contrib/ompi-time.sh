@@ -128,8 +128,8 @@ function do_timestamp() {
 function do_fswap() {
   if (( $# == 2 )); then
     mv "$1" /tmp/
-    mv "$2" "`dirname $1`"
-    mv "/tmp/`basename $1`" "`dirname $2`"
+    mv "$2" "$(dirname $1)"
+    mv "/tmp/$(basename $1)" "$(dirname $2)"
   else
     echo "Usage: swap <file1> <file2>"
     return 1
@@ -217,8 +217,8 @@ function do_checksync_mpisync() {
   cat ${syncfile} >> $logfile 2>&1
   diff=$(grep -v '^#' ${syncfile} | cut -f3 -d' ' | sort -n | awk 'BEGIN {min=1000000; max=0;}; { if($1<min && $1 != "") min = $1; if($1>max && $1 != "") max = $1; } END { printf("%0.06f %0.06f %0.06f", min, max, max-min) }') >> $logfile 2>&1
   do_msg "sync drift is equal: $diff"
-  diff=`echo $diff | cut -f3 -d' '`
-  status=$(if (( `bc <<< "$diff >= 0.001"` == 1 )); then echo "value $diff >= 0.001"; fi)
+  diff=$(echo $diff | cut -f3 -d' ')
+  status=$(if (( $(bc <<< "$diff >= 0.001") == 1 )); then echo "value $diff >= 0.001"; fi)
   if [ -n "$status" ] && [ -n $verbose -a "$verbose" == "on" ]; then
     do_err "mpisync reports issue with synchronization as $status"
   else
@@ -252,7 +252,7 @@ function do_checksync_mpiperf() {
   mpiexec -n $(($nodes)) -npernode 1 $mpioptions $tooldir/src/mpiperf -t gettimeofday WaitPatternNull >> ${syncfile} 2>&1
   do_msg "Analysing ${syncfile}"
   cat ${syncfile} >> $logfile 2>&1
-  status=$(grep -v '^#' ${syncfile} | awk -F ' ' '{ print $6 }' | while read i; do if (( `bc <<< "$i >= 1"` == 1 )); then echo "value $i >= 1.00"; break; fi; done)
+  status=$(grep -v '^#' ${syncfile} | awk -F ' ' '{ print $6 }' | while read i; do if (( $(bc <<< "$i >= 1") == 1 )); then echo "value $i >= 1.00"; break; fi; done)
   if [ -n "$status" ] && [ -n $verbose -a "$verbose" == "on" ]; then
     do_err "mpiperf reports issue with synchronization as $status"
   else
@@ -298,7 +298,7 @@ function do_analysis() {
   if [ "$(cat $outfile | wc -l)" != "$(($nodes * $ppn))" ]; then
     do_msg "Warning: number of lines in $outfile ($(cat $outfile | wc -l)) is not equal ($nodes * $ppn)."
   fi
-  start_t=`awk -F $'\t' '{ if (NR == 1) print $1 }' $basefile`
+  start_t=$(awk -F $'\t' '{ if (NR == 1) print $1 }' $basefile)
 
   # Add sync value in output file
   while read line; do
@@ -320,15 +320,15 @@ function do_analysis() {
   done < $outfile
 
   # Find maximum and minimum lines
-  min_line=`sort -n $outfile1 | head -n1`
-  max_line=`sort -n $outfile1 | tail -n1`
+  min_line=$(sort -n $outfile1 | head -n1)
+  max_line=$(sort -n $outfile1 | tail -n1)
   if [ -z "$min_line" -o -z "$max_line" ]; then
     do_err "can not find max/min lines in : $outfile1"
   fi
   min_t=$( echo "$min_line" | cut -f1 -d$'\t')
   max_t=$( echo "$max_line" | cut -f1 -d$'\t')
-  echo -e "`bc -l <<< "scale=3; (($min_t - $start_t) / 1000000)"`\t`echo "$min_line" | cut -f4 -d$'\t'`\t`echo "$min_line" | cut -f5 -d$'\t'`" >> $resultfile 2>&1
-  echo -e "`bc -l <<< "scale=3; (($max_t - $start_t) / 1000000)"`\t`echo "$max_line" | cut -f4 -d$'\t'`\t`echo "$max_line" | cut -f5 -d$'\t'`" >> $resultfile 2>&1
+  echo -e "$(bc -l <<< "scale=3; (($min_t - $start_t) / 1000000)")\t$(echo "$min_line" | cut -f4 -d$'\t')\t$(echo "$min_line" | cut -f5 -d$'\t')" >> $resultfile 2>&1
+  echo -e "$(bc -l <<< "scale=3; (($max_t - $start_t) / 1000000)")\t$(echo "$max_line" | cut -f4 -d$'\t')\t$(echo "$max_line" | cut -f5 -d$'\t')" >> $resultfile 2>&1
 
   echo -e "\n# Used synchronization file: $syncfile" >> $outfile1
 
@@ -343,8 +343,8 @@ function do_report() {
   if [ -z $resultfile -o ! -f $resultfile ]; then
     do_err "can not find resultfile: $resultfile"
   fi
-  min_t=`awk -F $'\t' '{ if (NR == 1) print $1 }' $resultfile`
-  max_t=`awk -F $'\t' '{ if (NR == 2) print $1 }' $resultfile`
+  min_t=$(awk -F $'\t' '{ if (NR == 1) print $1 }' $resultfile)
+  max_t=$(awk -F $'\t' '{ if (NR == 2) print $1 }' $resultfile)
   echo -e "${nodes}\t${ppn}\t${min_t}\t${max_t}" >> $reportfile 2>&1
 }
 
@@ -474,11 +474,11 @@ function do_parse() {
   local test_list
   local parsefile
 
-  for result in `ls -1 $workdir`; do
+  for result in $(ls -1 $workdir); do
     if [ ! -d "${parsedir}/${result}" ]; then
       continue
     fi
-    for test in `ls -1 "${parsedir}/${result}" | grep -v mpisync`; do
+    for test in $(ls -1 "${parsedir}/${result}" | grep -v mpisync); do
       if [ ! -d "${parsedir}/${result}/${test}" ]; then
         continue
       fi
@@ -487,8 +487,8 @@ function do_parse() {
     done
   done
 
-  result_list=`echo $result_list | tr " " "\n" | sort | uniq | tr "\n" " "`
-  test_list=`echo $test_list | tr " " "\n" | sort | uniq | tr "\n" " "`
+  result_list=$(echo $result_list | tr " " "\n" | sort | uniq | tr "\n" " ")
+  test_list=$(echo $test_list | tr " " "\n" | sort | uniq | tr "\n" " ")
 
   do_msg "results: $result_list"
   do_msg "tests: $test_list"

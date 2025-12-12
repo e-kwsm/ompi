@@ -33,7 +33,7 @@ BUILD_DIR=
 # options for this script.
 
 strip_quotes() {
-    echo `echo "$1" | sed -e "s/\(\"\)\([[:alnum:]|_|-]*\)\(\"\)/\2/"`
+    echo $(echo "$1" | sed -e "s/\(\"\)\([[:alnum:]|_|-]*\)\(\"\)/\2/")
 }
 
 PARAMS=""
@@ -113,13 +113,13 @@ eval set -- "$PARAMS"
 #
 # Start by figuring out what we are...
 #
-os=`uname -s`
+os=$(uname -s)
 if test "${os}" = "Linux"; then
-    eval "PLATFORM_ID=`sed -n 's/^ID=//p' /etc/os-release`"
-    eval "VERSION_ID=`sed -n 's/^VERSION_ID=//p' /etc/os-release`"
+    eval "PLATFORM_ID=$(sed -n 's/^ID=//p' /etc/os-release)"
+    eval "VERSION_ID=$(sed -n 's/^VERSION_ID=//p' /etc/os-release)"
 else
-    PLATFORM_ID=`uname -s`
-    VERSION_ID=`uname -r`
+    PLATFORM_ID=$(uname -s)
+    VERSION_ID=$(uname -r)
 fi
 
 echo "--> platform: $PLATFORM_ID"
@@ -183,7 +183,7 @@ echo "--> Configure arguments: $CONFIGURE_ARGS"
 cd "${WORKSPACE}/${SOURCE_DIR}"
 
 # Build
-sha1=`git rev-parse HEAD`
+sha1=$(git rev-parse HEAD)
 echo "--> Building commit ${sha1}"
 
 if test "${HOME}/ompi-setup-python.sh" ; then
@@ -268,7 +268,7 @@ cd ..
 set +e
 
 run_example() {
-    example=`basename ${2}`
+    example=$(basename ${2})
     echo "--> Running example: $example"
     ${1} ${2}
     ret=$?
@@ -284,7 +284,7 @@ if test "${MPIRUN_MODE}" != "none"; then
     echo "localhost cpu=2" > "${WORKSPACE}/hostfile"
     # Note: using perl here because figuring out a portable sed regexp
     # proved to be a little challenging.
-    mpirun_version=`"${WORKSPACE}/install/bin/mpirun" --version | perl -wnE 'say $1 if /mpirun [^\d]*(\d+.\d+)/'`
+    mpirun_version=$("${WORKSPACE}/install/bin/mpirun" --version | perl -wnE 'say $1 if /mpirun [^\d]*(\d+.\d+)/')
     echo "--> mpirun version: ${mpirun_version}"
     case ${mpirun_version} in
         1.*|2.0*)
