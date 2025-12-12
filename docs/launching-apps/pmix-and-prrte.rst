@@ -48,7 +48,7 @@ PMIx presents a unified API that hides many of the complexities of
 communication with these back-end run-time environments.  Open MPI
 uses the PMIx API to discover, communicate, and coordinate with any
 supported back-end run-time system without needing to know the
-intimiate details of that system.
+intimate details of that system.
 
 PRRTE
 -----
