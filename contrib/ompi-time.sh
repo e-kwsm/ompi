@@ -252,7 +252,7 @@ function do_checksync_mpiperf() {
   mpiexec -n $(($nodes)) -npernode 1 $mpioptions $tooldir/src/mpiperf -t gettimeofday WaitPatternNull >> ${syncfile} 2>&1
   do_msg "Analysing ${syncfile}"
   cat ${syncfile} >> $logfile 2>&1
-  status=$(grep -v '^#' ${syncfile} | awk -F ' ' '{ print $6 }' | while read i; do if (( $(bc <<< "$i >= 1") == 1 )); then echo "value $i >= 1.00"; break; fi; done)
+  status=$(grep -v '^#' ${syncfile} | awk -F ' ' '{ print $6 }' | while read -r i; do if (( $(bc <<< "$i >= 1") == 1 )); then echo "value $i >= 1.00"; break; fi; done)
   if [ -n "$status" ] && [ -n "$verbose" -a "$verbose" == "on" ]; then
     do_err "mpiperf reports issue with synchronization as $status"
   else
@@ -301,7 +301,7 @@ function do_analysis() {
   start_t=$(awk -F $'\t' '{ if (NR == 1) print $1 }' $basefile)
 
   # Add sync value in output file
-  while read line; do
+  while read -r line; do
     if [[ ! $line =~ ^[0-9] ]]; then
       do_msg "Warning: ignoring line: $line."
       continue

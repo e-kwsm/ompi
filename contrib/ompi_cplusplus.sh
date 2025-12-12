@@ -7,7 +7,7 @@
 #
 TMPDIR=${TMPDIR:-.}
 
-while read LINE  ; do
+while read -r LINE  ; do
   if test '#' = ${LINE:0:1} ; then
     continue
   fi
