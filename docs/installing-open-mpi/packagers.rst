@@ -145,7 +145,7 @@ performance savings.
 .. note:: If not using a networked filesystem, or if not launching at
           scale, loading a large number of DSO files may not consume a
           noticeable amount of time during MPI process launch.  Put
-          simply: loading DSOs as indvidual files generally only
+          simply: loading DSOs as individual files generally only
           matters when using a networked filesystem while launching at
           scale.
 
