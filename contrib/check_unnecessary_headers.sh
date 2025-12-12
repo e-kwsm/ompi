@@ -22,8 +22,8 @@
 function del_header()
 {
     file=$1
-    header=`echo $2 | sed 's/\//\\\\\//g'`
-    line=`grep -n "#include \"$2" $file | cut -f1 -d':' | head -n1`
+    header=$(echo $2 | sed 's/\//\\\\\//g')
+    line=$(grep -n "#include \"$2" $file | cut -f1 -d':' | head -n1)
 
     if [ "x$line" = "x" ] ; then
         echo Can not find pattern $header file $file -- will not delete
@@ -49,14 +49,14 @@ function delete_unnessary_header()
 {
     DIR=$1
     i=0
-    while [ "x${SEARCH_HEADER[i]}" != "x" ] ; do
-        HEADER=`echo ${SEARCH_HEADER[i]} | cut -f 1 -d' '`
-        HEADER_BASENAME=`basename $HEADER`
-        for file in `find $DIR -type f '(' -name '*.[cChysSfF]' -o \
+    while [ -n "${SEARCH_HEADER[i]}" ] ; do
+        HEADER=$(echo ${SEARCH_HEADER[i]} | cut -f 1 -d' ')
+        HEADER_BASENAME=$(basename $HEADER)
+        for file in $(find $DIR -type f '(' -name '*.[cChysSfF]' -o \
                                            -iname '*.cc' -o -name '*.cpp' -o \
-                                           -iname '*.f77' -o -iname '*.f90' ')' | sort | xargs grep -n $HEADER | cut -f1 -d':' | sort | uniq` ; do
+                                           -iname '*.f77' -o -iname '*.f90' ')' | sort | xargs grep -n $HEADER | cut -f1 -d':' | sort | uniq) ; do
             need_h=0
-            ARGS=`echo ${SEARCH_HEADER[i]} | cut -f2- -d' '`
+            ARGS=$(echo ${SEARCH_HEADER[i]} | cut -f2- -d' ')
             for arg in $ARGS ; do
                 # echo $HEADER $file $arg
                 # If the poor argument is part of the header's name, how to find it? Well, need to play with grep!

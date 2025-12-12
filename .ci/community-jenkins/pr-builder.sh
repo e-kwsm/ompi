@@ -31,7 +31,7 @@ MPIRUN_MODE=${MPIRUN_MODE:-runall}
 # options for this script.
 
 strip_quotes() {
-    echo `echo "$1" | sed -e "s/\(\"\)\([[:alnum:]|_|-]*\)\(\"\)/\2/"`
+    echo $(echo "$1" | sed -e "s/\(\"\)\([[:alnum:]|_|-]*\)\(\"\)/\2/")
 }
 
 PARAMS=""
@@ -93,13 +93,13 @@ eval set -- "$PARAMS"
 #
 # Start by figuring out what we are...
 #
-os=`uname -s`
+os=$(uname -s)
 if test "${os}" = "Linux"; then
-    eval "PLATFORM_ID=`sed -n 's/^ID=//p' /etc/os-release`"
-    eval "VERSION_ID=`sed -n 's/^VERSION_ID=//p' /etc/os-release`"
+    eval "PLATFORM_ID=$(sed -n 's/^ID=//p' /etc/os-release)"
+    eval "VERSION_ID=$(sed -n 's/^VERSION_ID=//p' /etc/os-release)"
 else
-    PLATFORM_ID=`uname -s`
-    VERSION_ID=`uname -r`
+    PLATFORM_ID=$(uname -s)
+    VERSION_ID=$(uname -r)
 fi
 
 echo "--> platform: $PLATFORM_ID"
@@ -147,19 +147,19 @@ case ${PLATFORM_ID} in
                 echo "--> Using default compilers"
                 ;;
             gcc4*)
-                version=`echo "$COMPILER" | sed -e 's/gcc4\([0-9]*\)/4.\1/'`
+                version=$(echo "$COMPILER" | sed -e 's/gcc4\([0-9]*\)/4.\1/')
                 CONFIGURE_ARGS="CC=gcc-${version} CXX=g++-${version} FC=gfortran-${version}"
                 ;;
             gcc*)
-                version=`echo "$COMPILER" | sed -e 's/gcc\([0-9]*\)/\1/'`
+                version=$(echo "$COMPILER" | sed -e 's/gcc\([0-9]*\)/\1/')
                 CONFIGURE_ARGS="CC=gcc-${version} CXX=g++-${version} FC=gfortran-${version}"
                 ;;
             clang3*|clang4*|clang5*|clang6*)
-                version=`echo "$COMPILER" |  sed -e 's/clang\([0-9]\)\([0-9]*\)/\1.\2/'`
+                version=$(echo "$COMPILER" |  sed -e 's/clang\([0-9]\)\([0-9]*\)/\1.\2/')
                 CONFIGURE_ARGS="CC=clang-${version} CXX=clang++-${version} --disable-mpi-fortran"
                 ;;
             clang*)
-                version=`echo "$COMPILER" | sed -e 's/clang\([0-9]*\)/\1/'`
+                version=$(echo "$COMPILER" | sed -e 's/clang\([0-9]*\)/\1/')
                 CONFIGURE_ARGS="CC=clang-${version} CXX=clang++-${version} --disable-mpi-fortran"
                 ;;
             *)
@@ -211,7 +211,7 @@ echo "--> Autogen arguments: $AUTOGEN_ARGS"
 echo "--> Configure arguments: $CONFIGURE_ARGS"
 
 # Build
-sha1=`git rev-parse HEAD`
+sha1=$(git rev-parse HEAD)
 echo "--> Building commit ${sha1}"
 
 if test -f autogen.pl; then
@@ -277,7 +277,7 @@ cd ..
 set +e
 
 run_example() {
-    example=`basename ${2}`
+    example=$(basename ${2})
     echo "--> Running example: $example"
     ${1} ${2}
     ret=$?
@@ -293,7 +293,7 @@ if test "${MPIRUN_MODE}" != "none"; then
     echo "localhost cpu=2" > "${WORKSPACE}/hostfile"
     # Note: using perl here because figuring out a portable sed regexp
     # proved to be a little challenging.
-    mpirun_version=`"${WORKSPACE}/install/bin/mpirun" --version | perl -wnE 'say $1 if /mpirun [^\d]*(\d+.\d+)/'`
+    mpirun_version=$("${WORKSPACE}/install/bin/mpirun" --version | perl -wnE 'say $1 if /mpirun [^\d]*(\d+.\d+)/')
     echo "--> mpirun version: ${mpirun_version}"
     case ${mpirun_version} in
         1.*|2.0*)

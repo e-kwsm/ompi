@@ -81,7 +81,7 @@ function filter_output() {
             out=$tmpdir/tmp $filename
     done
     # trim spaces and replace them with comma in each file generated with awk
-    for file in `ls $tmpdir/*.*.$nbprocs.csv`
+    for file in $(ls $tmpdir/*.*.$nbprocs.csv)
     do
         sed -i 's/[[:space:]]\{1,\}/,/g' $file
     done
