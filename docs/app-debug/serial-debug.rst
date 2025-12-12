@@ -1,7 +1,7 @@
 Using Serial Debuggers to Debug Open MPI Applications
 =====================================================
 
-Since the GNU debugger (``gdb``) is fairly ubiquitiously
+Since the GNU debugger (``gdb``) is fairly ubiquitously
 available, it is common to use a serial debugger for debugging Open
 MPI applications.  Parallel debuggers are generally *better*, but
 ``gdb`` is free, and therefore quite common.
