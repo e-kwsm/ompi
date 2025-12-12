@@ -76,7 +76,7 @@ option:
 .. code-block:: sh
 
    shell$ mpirun -n 6 mpi-hello-world
-   Hello world, I am 0 of 6 (running on my-laptop))
+   Hello world, I am 0 of 6 (running on my-laptop)
    Hello world, I am 1 of 6 (running on my-laptop)
    ...
    Hello world, I am 5 of 6 (running on my-laptop)
