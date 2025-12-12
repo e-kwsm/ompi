@@ -219,7 +219,7 @@ function do_checksync_mpisync() {
   do_msg "sync drift is equal: $diff"
   diff=$(echo $diff | cut -f3 -d' ')
   status=$(if (( $(bc <<< "$diff >= 0.001") == 1 )); then echo "value $diff >= 0.001"; fi)
-  if [ -n "$status" ] && [ -n $verbose -a "$verbose" == "on" ]; then
+  if [ -n "$status" ] && [ -n "$verbose" -a "$verbose" == "on" ]; then
     do_err "mpisync reports issue with synchronization as $status"
   else
     do_msg "Warning: mpiperf reports issue with synchronization as $status"
@@ -253,7 +253,7 @@ function do_checksync_mpiperf() {
   do_msg "Analysing ${syncfile}"
   cat ${syncfile} >> $logfile 2>&1
   status=$(grep -v '^#' ${syncfile} | awk -F ' ' '{ print $6 }' | while read i; do if (( $(bc <<< "$i >= 1") == 1 )); then echo "value $i >= 1.00"; break; fi; done)
-  if [ -n "$status" ] && [ -n $verbose -a "$verbose" == "on" ]; then
+  if [ -n "$status" ] && [ -n "$verbose" -a "$verbose" == "on" ]; then
     do_err "mpiperf reports issue with synchronization as $status"
   else
     do_msg "Warning: mpiperf reports issue with synchronization as $status"
