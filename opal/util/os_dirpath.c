@@ -157,7 +157,7 @@ int opal_os_dirpath_destroy(const char *path, bool recursive,
     }
 
     /*
-     * Make sure we have access to the the base directory
+     * Make sure we have access to the base directory
      */
     if (OPAL_SUCCESS != (rc = opal_os_dirpath_access(path, 0))) {
         exit_status = rc;
