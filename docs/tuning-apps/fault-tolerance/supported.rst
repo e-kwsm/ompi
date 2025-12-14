@@ -46,5 +46,5 @@ links below:
 Support for other types of resilience (e.g., :ref:`data reliability <ft-data-reliability-label>`,
 :ref:`checkpoint <ft-checkpoint-restart-label>`) has been deprecated over the
 years due to lack of adoption and lack of maintenance. If you are interested
-in doing some archeological work, traces are still available on the main
+in doing some archaeological work, traces are still available on the main
 repository.
