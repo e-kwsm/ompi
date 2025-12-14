@@ -300,7 +300,7 @@ unsigned long opal_bcopy_csum_partial(const void *source, void *destination, siz
                 if (copylen) {
                     memcpy(&temp, src, copylen);
                 }
-                /* add it to the the checksum */
+                /* add it to the checksum */
                 csum += temp;
                 *lastPartialLong = temp;
             } else {
@@ -624,7 +624,7 @@ unsigned int opal_bcopy_uicsum_partial(const void *source, void *destination, si
                 if (copylen) {
                     memcpy(&temp, src, copylen);
                 }
-                /* add it to the the checksum */
+                /* add it to the checksum */
                 csum += temp;
                 *lastPartialInt = temp;
             } else {
@@ -823,7 +823,7 @@ unsigned long opal_csum_partial(const void *source, size_t csumlen, unsigned lon
                 if (csumlen) {
                     memcpy(&temp, src, csumlen);
                 }
-                /* add it to the the checksum */
+                /* add it to the checksum */
                 csum += temp;
                 *lastPartialLong = temp;
             } else {
@@ -958,7 +958,7 @@ unsigned int opal_uicsum_partial(const void *source, size_t csumlen, unsigned in
                 if (csumlen) {
                     memcpy(&temp, src, csumlen);
                 }
-                /* add it to the the checksum */
+                /* add it to the checksum */
                 csum += temp;
                 *lastPartialInt = temp;
             } else {
