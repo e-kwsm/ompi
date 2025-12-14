@@ -710,7 +710,7 @@ usnic_component_init(int *num_btl_modules, bool want_progress_threads, bool want
 
     /************************************************************************
      * Below this line, we assume that usnic is loaded on all procs,
-     * and therefore we will guarantee to the the modex send, even if
+     * and therefore we will guarantee to the modex send, even if
      * we fail.
      ************************************************************************/
 
