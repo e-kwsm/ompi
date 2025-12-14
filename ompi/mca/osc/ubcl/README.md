@@ -274,7 +274,7 @@ to `UBCL_WIN_SYNC_FENCE_EPOCH`.
 That also means we have to have to allow other synchronization schemes to start an
 epoch on `UBCL_WIN_SYNC_FENCE` as if it's `UBCL_WIN_SYNC_NONE`.
 The function flushes the one-sided communications started in the current epoch,
-acting as a barrier. Additionally whencalled inside a *fence* epoch, it  closes
+acting as a barrier. Additionally when called inside a *fence* epoch, it  closes
 said epoch. The sync type is back to `UBCL_WIN_SYNC_FENCE`.
 
 Here we take into account the `MPI_MODE_NOPRECEDE` and `MPI_MODE_NOSUCCEED`
@@ -283,7 +283,7 @@ one-sided communications since there are none. We don't exploit the second asser
 much except in the case where both values are given, then the *fence* doesn't do much.
 
 
-## One-Sided Communicaions
+## One-Sided Communications
 
 ### Put
 

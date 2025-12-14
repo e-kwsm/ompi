@@ -32,7 +32,7 @@ This example extension defines a new top-level API named
 to call this API in each of the four binding types.  Code (and
 comments) is worth 1,000 words -- see the code in this example
 extension to understand how it works and how the build system builds
-and inserts each piece into the publicly-available mechansisms (e.g.,
+and inserts each piece into the publicly-available mechanisms (e.g.,
 `mpi-ext.h` and the `mpi_f08_ext` module).
 
 ## Comparison to General Open MPI MCA Components
