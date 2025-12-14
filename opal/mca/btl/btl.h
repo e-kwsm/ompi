@@ -606,7 +606,7 @@ typedef int (*mca_btl_base_component_progress_fn_t)(void);
 /**
  * Callback function that is called asynchronously on receipt
  * of data by the transport layer.
- * Note that the the mca_btl_base_receive_descriptor_t is only valid within the
+ * Note that the mca_btl_base_receive_descriptor_t is only valid within the
  * completion function, this implies that all data payload in the
  * mca_btl_base_descriptor_t must be copied out within this callback or
  * forfeited back to the BTL.
