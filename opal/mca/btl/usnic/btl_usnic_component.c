@@ -650,7 +650,7 @@ usnic_component_init(int *num_btl_modules, bool want_progress_threads, bool want
     if (libfabric_api < FI_VERSION(1, 3)) {
         opal_output_verbose(
             5, USNIC_OUT,
-            "btl:usnic: disqualifiying myself because Libfabric does not support v1.3 of the API "
+            "btl:usnic: disqualifying myself because Libfabric does not support v1.3 of the API "
             "(v1.3 is *required* for correct usNIC functionality).");
         return NULL;
     }
@@ -685,7 +685,7 @@ usnic_component_init(int *num_btl_modules, bool want_progress_threads, bool want
     ret = fi_getinfo(libfabric_api, NULL, 0, 0, &hints, &info_list);
     if (0 != ret) {
         opal_output_verbose(
-            5, USNIC_OUT, "btl:usnic: disqualifiying myself due to fi_getinfo(3) failure: %s (%d)",
+            5, USNIC_OUT, "btl:usnic: disqualifying myself due to fi_getinfo(3) failure: %s (%d)",
             strerror(-ret), ret);
         return NULL;
     }
@@ -696,7 +696,7 @@ usnic_component_init(int *num_btl_modules, bool want_progress_threads, bool want
     }
     if (0 == num_devs) {
         opal_output_verbose(5, USNIC_OUT,
-                            "btl:usnic: disqualifiying myself due to lack of libfabric providers");
+                            "btl:usnic: disqualifying myself due to lack of libfabric providers");
         return NULL;
     }
 
@@ -704,7 +704,7 @@ usnic_component_init(int *num_btl_modules, bool want_progress_threads, bool want
        is required for registered memory). */
     if (OPAL_SUCCESS != check_reg_mem_basics()) {
         opal_output_verbose(5, USNIC_OUT,
-                            "btl:usnic: disqualifiying myself due to lack of lockable memory");
+                            "btl:usnic: disqualifying myself due to lack of lockable memory");
         return NULL;
     }
 
