@@ -393,7 +393,7 @@ typedef struct ompi_communicator_t ompi_communicator_t;
  * configurations of Open MPI (e.g., MPI_COMM_WORLD will refer to a
  * back-end struct that is X bytes long, even if we change the
  * back-end ompi_communicator_t between version A.B and version C.D in
- * Open MPI).  When we come close to filling up the the padding we can
+ * Open MPI).  When we come close to filling up the padding we can
  * add a pointer at the back end of the base structure to point to an
  * extension of the type.  Or we can just increase the padding and
  * break backwards binary compatibility.
@@ -628,7 +628,7 @@ static inline ompi_communicator_t *ompi_comm_lookup_cid (const ompi_comm_extende
     ompi_communicator_t *comm = NULL;
     (void) opal_hash_table_get_value_ptr (&ompi_comm_hash, &cid, sizeof (cid), (void **) &comm);
     /*
-     * return NULL if the comm does not yet have an asociated PML
+     * return NULL if the comm does not yet have an associated PML
      */
     if ((NULL != comm) && !OMPI_COMM_IS_PML_ADDED(comm)) {
         comm = NULL;

@@ -90,7 +90,7 @@ PROTOTYPE ERROR_CLASS unpack(BUFFER inbuf,
     if( insize > 0 ) {
         int ret;
         OBJ_CONSTRUCT( &local_convertor, opal_convertor_t );
-        /* the resulting convertor will be set the the position ZERO */
+        /* the resulting convertor will be set the position ZERO */
         opal_convertor_copy_and_prepare_for_recv( ompi_mpi_local_convertor,
                                                   &(dtmod.dt->super), dtmod.count,
                                                   outbuf, 0, &local_convertor );
@@ -111,7 +111,7 @@ PROTOTYPE ERROR_CLASS unpack(BUFFER inbuf,
         ret = opal_convertor_unpack( &local_convertor, &outvec, &iov_count, &size );
         *position += size;
         OBJ_DESTRUCT( &local_convertor );
-        /* All done.  Note that the convertor returns 1 upon success, not
+        /* All done.  Note that the converter returns 1 upon success, not
            OPAL_SUCCESS. */
         if (1 != ret) {
             rc_keep = OMPI_ERROR;

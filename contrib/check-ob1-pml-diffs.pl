@@ -78,7 +78,7 @@ if (!$ok || $help_arg) {
 Usage: $0 [--show|-S] [--showall|-s] [--pml|-p=PML]  [--output|-o=OUTPUTFILE]
         [--verbose|-v] [--help|-h]
 
-Runs a diff between the the files in the ob1 and the bfo directory and
+Runs a diff between the files in the ob1 and the bfo directory and
 prints the output to stdout.  Prior to checking the differences, the
 script removes all copyright header code.  It also first removes all
 failover specific code in the bfo files.  Specifically, the script

@@ -11,7 +11,7 @@ same end effect.  Feel free to customize / simplify / strip out what
 you don't need from this example.
 
 This example component supports a fictitious set of hardware that
-provides acceleation for the `MPI_MAX` and `MPI_BXOR` `MPI_Ops`.  The
+provides acceleration for the `MPI_MAX` and `MPI_BXOR` `MPI_Ops`.  The
 fictitious hardware has multiple versions, too: some versions only
 support single precision floating point types for `MAX` and single
 precision integer types for `BXOR`, whereas later versions support
@@ -34,7 +34,7 @@ memory.  So even if a particular `MPI_Op` and datatype are supported, it
 may not be worthwhile to use the hardware unless the amount of data to
 be processed is "big enough" (meaning that the cost of the
 registration and/or copy-in/copy-out is ameliorated) or the memory to
-be processed is already registered or is otherwise local to the the
+be processed is already registered or is otherwise local to the
 accelerator hardware.
 
 Hence, at run-time, the module may choose to use the accelerator

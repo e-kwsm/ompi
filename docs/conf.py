@@ -55,7 +55,7 @@ def read_version_file(path):
 
     return data
 
-# Look for a version string via a regular expresion of a filename in a
+# Look for a version string via a regular expression of a filename in a
 # given directory
 def get_tarball_version(path, expr):
     if not os.path.exists(path):
