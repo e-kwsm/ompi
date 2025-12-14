@@ -141,7 +141,7 @@ exists for two reasons, however:
    as this `README.md` file.
 
 This are reasons for this strange ordering, but suffice it to say that
-`make dist` doesn't have the same ordering requiements as `make all`,
+`make dist` doesn't have the same ordering requirements as `make all`,
 and is therefore easier to have a "normal" Automake-usual top-down
 sequential directory traversal.
 
