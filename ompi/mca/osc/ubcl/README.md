@@ -55,10 +55,10 @@ The module is specific to one window and it holds in fact the fields necessary t
 that window such as the parent classes for example.
 The super field holds the available one-sided communications while win holds the necessary
 data to compute what's needed for the window at a higher level than the osc/ubcl.
-We fill the function pointers of super by coppying them from a template established
+We fill the function pointers of super by copying them from a template established
 in `osc_ubcl_component.c` file.
 It means in theory that we could deactivate or switch API calls to some other one-sided
-function but in pratice every window have the same calls.
+function but in practice every window have the same calls.
 The communicator field is a duplicated communicator of the one that was used to
 start the window with. It is necessary info about the group of procs of the window,
 in part in order to synchronize procs at window create/free using regular MPI
@@ -249,7 +249,7 @@ In UBCL, the functions only take one target at a time whereas OMPI PSCW function
 take a whole group. So *Post* and *Start* loop on the group given in argument and
 the *Complete*, *Wait* and *Test* loop on the groups specified - and stored
 inside the window - when the epoch was established.
-Below is the correspondance list between UBCL and OMPI :
+Below is the correspondence list between UBCL and OMPI :
 - `MPI_Win_post`     => `ubcl_win_target_grants_lock`
 - `MPI_Win_start`    => `ubcl_win_initiator_waits_lock`
 - `MPI_Win_complete` => `ubcl_win_initiator_releases_lock`
@@ -369,7 +369,7 @@ int ompi_osc_ubcl_compare_and_swap(const void *origin_addr, const void *compare_
 ```
 
 The implementation makes use of the similarity between these functions so *accumulate*
-calls *raccumulate* wih *ompi_req = NULL*, *raccumulate* calls *rget_accumulate*
+calls *raccumulate* with *ompi_req = NULL*, *raccumulate* calls *rget_accumulate*
 with all result argument sets to NULL or 0.
 *get_accumulate* calls *rget_acucmulate* with *ompi_req = NULL*.
 *fetch_op* also only needs to call *get_accumulate* with the correct arguments.

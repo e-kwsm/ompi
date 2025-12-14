@@ -81,7 +81,7 @@ is updated with length, BTL header is updated, then we call
 `opal_btl_usnic_endpoint_send_segment()` to send the segment.  After
 posting, we make a PML callback if needed.
 
-For large fragments, a little more is needed.  segments froma large
+For large fragments, a little more is needed.  segments from a large
 fragment have a slightly larger BTL header which contains a fragment
 ID, and offset, and a size.  The fragment ID is allocated when the
 first chunk the fragment is sent.  A segment gets allocated, next blob
