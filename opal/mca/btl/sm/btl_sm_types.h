@@ -187,7 +187,7 @@ typedef struct mca_btl_sm_sc_emu_hdr_t mca_btl_sm_sc_emu_hdr_t;
 struct mca_btl_sm_hdr_t {
     /** next item in fifo. many peers may touch this */
     volatile intptr_t next;
-    /** pointer back the the fragment */
+    /** pointer back the fragment */
     struct mca_btl_sm_frag_t *frag;
     /** tag associated with this fragment (used to lookup callback) */
     mca_btl_base_tag_t tag;
