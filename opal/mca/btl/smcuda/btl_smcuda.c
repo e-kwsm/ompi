@@ -516,7 +516,7 @@ int mca_btl_smcuda_add_procs(struct mca_btl_base_module_t *btl, size_t nprocs,
     /* for easy access to the mpool_sm_module */
     mca_common_sm_mpool_module_t *sm_mpool_modp = NULL;
 
-    /* initializion */
+    /* initialization */
 
     smcuda_btl = (mca_btl_smcuda_t *) btl;
 
@@ -525,8 +525,8 @@ int mca_btl_smcuda_add_procs(struct mca_btl_base_module_t *btl, size_t nprocs,
         return OPAL_ERR_OUT_OF_RESOURCE;
 
     /* Get unique host identifier for each process in the list,
-     * and idetify procs that are on this host.  Add procs on this
-     * host to shared memory reachbility list.  Also, get number
+     * and identify procs that are on this host.  Add procs on this
+     * host to shared memory reachability list.  Also, get number
      * of local procs in the procs list. */
     for (proc = 0; proc < (int32_t) nprocs; proc++) {
         /* check to see if this proc can be reached via shmem (i.e.,
@@ -680,7 +680,7 @@ int mca_btl_smcuda_add_procs(struct mca_btl_base_module_t *btl, size_t nprocs,
     /* update the local smp process count */
     mca_btl_smcuda_component.num_smp_procs += n_local_procs;
 
-    /* make sure we have enough eager fragmnents for each process */
+    /* make sure we have enough eager fragments for each process */
     return_code = opal_free_list_resize_mt(&mca_btl_smcuda_component.sm_frags_eager,
                                            mca_btl_smcuda_component.num_smp_procs * 2);
     if (OPAL_SUCCESS != return_code)
@@ -1039,7 +1039,7 @@ static int mca_btl_smcuda_deregister_mem(struct mca_btl_base_module_t *btl,
 }
 
 /*
- * Put remote event on stream to ensure that the the start of the
+ * Put remote event on stream to ensure that the start of the
  * copy does not start until the completion of the event.
  */
 static void mca_btl_smcuda_wait_stream_synchronize(mca_opal_gpu_reg_t *rget_reg)
