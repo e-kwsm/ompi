@@ -529,7 +529,7 @@ typedef struct mqs_process_callbacks
  * Calls from the debugger into the DLL.
  ***********************************************************************/
 
-/* Provide the library with the pointers to the the debugger functions
+/* Provide the library with the pointers to the debugger functions
  * it needs The DLL need only save the pointer, the debugger promises
  * to maintain the table of functions valid for as long as
  * needed. (The table remains the property of the debugger, and should

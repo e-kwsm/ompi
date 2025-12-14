@@ -262,7 +262,7 @@ middleware, and thus are not easily detected by the use of memory checkers.
 
 DTrace helps with debugging such problems using variables, the profile
 provider, and a callstack function.  The mpicommcheck.d script (shown in the
-example below) probes for all the the MPI communicator calls that allocate and
+example below) probes for all the MPI communicator calls that allocate and
 deallocate communicators, and keeps track of the stack each time the function
 is called.  Every 10 seconds the script dumps out the current count of MPI
 communicator calls and the total calls for the allocation and deallocation of
