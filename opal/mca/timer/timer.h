@@ -52,7 +52,7 @@
  * frequency of the cycle counter in use, *NOT* the frequency of the
  * main CPU.
  *
- * Unless otherwise noted, no attempt is made to cope with the the
+ * Unless otherwise noted, no attempt is made to cope with the
  * differences in counters on SMP machines.  If your process switches
  * CPUs, your timer results may change.
  *
