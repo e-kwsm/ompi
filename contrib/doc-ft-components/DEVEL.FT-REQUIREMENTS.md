@@ -394,7 +394,7 @@ The `coll_ftagree` component provides an optimized fault tolerant
 implementation of these operations, and is loaded when fault tolerance is
 enabled at runtime. If a collective component wants to substitute its own
 implementation of the agreement, the normal priority rules for component selection
-apply (i.e., users and develloppers can tweak the values of MCA parameters
+apply (i.e., users and developers can tweak the values of MCA parameters
 `coll_ftagree_priority` and `coll_xyz_priority` to prefer one over the other.
 
 Note that legacy components may use static initializers to fill-in the component
