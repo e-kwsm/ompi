@@ -532,7 +532,7 @@ static int ompi_comm_nextcid_ext_nb (ompi_communicator_t *newcomm, ompi_communic
     if (NULL == arg1) {
         if (OMPI_COMM_CID_GROUP == mode || OMPI_COMM_CID_GROUP_NEW == mode ||
             !ompi_comm_extended_cid_block_available (&comm->c_contextidb)) {
-            /* need a new block. it will be either assigned the the new communicator (MPI_Comm_create*_group)
+            /* need a new block. it will be either assigned the new communicator (MPI_Comm_create*_group)
              * or the parent (which has no more CIDs in its block) */
             rc = ompi_comm_ext_cid_new_block (newcomm, comm, block, arg0, arg1, send_first, mode, req);
             if (OPAL_UNLIKELY(OMPI_SUCCESS != rc)) {
@@ -571,7 +571,7 @@ int ompi_comm_nextcid_nb (ompi_communicator_t *newcomm, ompi_communicator_t *com
         return ompi_comm_nextcid_ext_nb (newcomm, comm, bridgecomm, arg0, arg1, send_first, mode, req);
     }
 
-    /* old CID algorighm */
+    /* old CID algorithm */
 
     /* if we got here and comm is NULL then that means the app is invoking MPI-4 Sessions or later
        functions but the pml does not support these functions so return not supported */
