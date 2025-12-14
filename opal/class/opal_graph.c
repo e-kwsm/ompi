@@ -297,7 +297,7 @@ void opal_graph_remove_vertex(opal_graph_t *graph, opal_graph_vertex_t *vertex)
      * they will be released in the destructor for adj_list */
     adj_list = vertex->in_adj_list;
     /**
-     * remove the adjscency list of this vertex from the graph and
+     * remove the adjacency list of this vertex from the graph and
      * destruct it.
      */
     opal_list_remove_item(graph->adjacency_list, (opal_list_item_t *) adj_list);
@@ -566,7 +566,7 @@ uint32_t opal_graph_spf(opal_graph_t *graph, opal_graph_vertex_t *vertex1,
  *
  * @return int 1 - the first item weight is higher then the
  *         second item weight. 0 - the weights are equal. -1 -
- *         the second item weight is higher the the first item
+ *         the second item weight is higher the first item
  *         weight.
  */
 static int compare_vertex_distance(const void *item1, const void *item2)
@@ -585,7 +585,7 @@ static int compare_vertex_distance(const void *item1, const void *item2)
     else if (vertex_dist1->weight == vertex_dist2->weight) {
         return 0;
     }
-    /* if you reached here then the second item weight is higher the the first item weight */
+    /* if you reached here then the second item weight is higher the first item weight */
     return -1;
 }
 
@@ -665,7 +665,7 @@ uint32_t opal_graph_dijkstra(opal_graph_t *graph, opal_graph_vertex_t *vertex,
         qsort(q_start, number_of_items_in_q, sizeof(vertex_distance_from_t),
               compare_vertex_distance);
     }
-    /* copy the working queue the the returned distance array */
+    /* copy the working queue the returned distance array */
     for (i = 0; i < graph_order - 1; i++) {
         opal_value_array_append_item(distance_array, (void *) &(Q[i + 1]));
     }
@@ -720,9 +720,9 @@ void opal_graph_duplicate(opal_graph_t **dest, opal_graph_t *src)
     /**
      * Now, copy all the edges from the source graph
      */
-    /* Run on all the adjscency lists in the graph */
+    /* Run on all the adjacency lists in the graph */
     OPAL_LIST_FOREACH (aj_list, src->adjacency_list, opal_adjacency_list_t) {
-        /* for all the edges in the adjscency list */
+        /* for all the edges in the adjacency list */
         OPAL_LIST_FOREACH (edge, aj_list->edges, opal_graph_edge_t) {
             /* construct new edge for the new graph */
             new_edge = OBJ_NEW(opal_graph_edge_t);
