@@ -18,7 +18,7 @@
  * notice, this list of conditions and the following disclaimer in the
  * documentation and/or other materials provided with the distribution.
  *
- * Neither the name of the the copyright holders nor the
+ * Neither the name of the copyright holders nor the
  * names of its contributors may be used to endorse or promote products
  * derived from this software without specific prior written permission.
  *
@@ -77,7 +77,7 @@ double mpigclock_sync_linear(MPI_Comm comm, int root, double *rtt)
 
 /*
  * mpigclock_sync_log: Clock synchronization algorithm with O(logn) steps.
- * rtt argumrnt does not have a meaning
+ * rtt argument does not have a meaning
  */
 double mpigclock_sync_log(MPI_Comm comm, int root, double *rtt)
 {
