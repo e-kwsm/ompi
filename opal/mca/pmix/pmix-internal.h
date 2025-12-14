@@ -209,7 +209,7 @@ typedef struct {
     } while (0)
 
 /*
- * Count the fash for the the external RM
+ * Count the hash for the external RM
  */
 #define OPAL_HASH_JOBID(str, hash) \
     {                              \
