@@ -75,7 +75,7 @@ if (!$ok || $help_arg) {
 Usage: $0 [--show|-S] [--showall|-s] [--btl|-p=BTL]  [--output|-o=OUTPUTFILE]
         [--verbose|-v] [--help|-h]
 
-Runs a diff between the the files in the sm and the smcuda directory
+Runs a diff between the files in the sm and the smcuda directory
 and prints the output to stdout.  Prior to checking the differences,
 the script removes all copyright header code.  It also first removes
 all CUDA specific code in the smcuda files.  Specifically, the script

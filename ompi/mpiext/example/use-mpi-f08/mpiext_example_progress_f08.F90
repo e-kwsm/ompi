@@ -40,7 +40,7 @@ subroutine OMPI_Progress_f08(count, comm, ierror)
   INTEGER, OPTIONAL, INTENT(OUT) :: ierror
   integer :: count, c_ierror
 
-  ! Here we call the the back-end C function in the mpif.h bindings,
+  ! Here we call the back-end C function in the mpif.h bindings,
   ! but convert the mpi_f08-style MPI handles to mpif.h-style handles
   ! (by taking the MPI_VAL member out of its "struct").
   call OMPI_Progress_f(count, comm%MPI_VAL, c_ierror)

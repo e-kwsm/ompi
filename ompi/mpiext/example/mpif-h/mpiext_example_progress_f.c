@@ -26,7 +26,7 @@
 /* Rather than doing a whole pile of messy things with weak symbols,
    just define one back-end function (the _f version), and then four
    short functions for the four popular Fortran symbol-mangling
-   schemes that call the back-end function.  Make sure that the the
+   schemes that call the back-end function.  Make sure that the
    back-end function is public so that it can be callable from the
    mpi_f08_ext library. */
 
