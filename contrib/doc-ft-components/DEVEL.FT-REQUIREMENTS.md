@@ -462,7 +462,7 @@ That is, the buffer associated with such a request may still be receiving
 updates from the network receiving message fragments, or RDMA updates.
 
 Instead, the cleanup of such requests must wait that they complete in error
-(as they will, due to the mechanism discussed in the above paragrah). Note
+(as they will, due to the mechanism discussed in the above paragraph). Note
 that only process failure errors are guaranteed to complete in error. Other
 types of errors may deadlock if the request is waited. An example of the
 appropriate cleanup of fault-interrupted requests is found in `coll_base_util.c`
@@ -649,7 +649,7 @@ also exercise `MPI_Sendrecv`.
 
 Test `05.err_coll.c` verifies that a blocking collective communication completes (possibly in
 error) at all ranks. This test is designed for a process failure to be detected during the
-collective operation, and can be used as a skeletton to track issues with a particular
+collective operation, and can be used as a skeleton to track issues with a particular
 collective operation by just substituting the collective call of interest.
 
 Test `07.err_comm_grid2d.c` is designed for a process failure to be detected during a communicator
