@@ -360,7 +360,7 @@ EOF
 # RH 8.0 changed from using "rpm -ba" to "rpmbuild -ba".  ARRGGH!!!
 #
 
-which rpmbuild 2>&1 >/dev/null
+which rpmbuild >/dev/null 2>&1
 if test "$?" = "0"; then
     rpm_cmd="rpmbuild"
 else

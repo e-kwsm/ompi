@@ -177,7 +177,7 @@ sub find_program {
     # loop through the list and save the first one that we find
     my $i = 0;
     while ($i <= $#names) {
-        my $ret = system("which $names[$i] 2>&1 >/dev/null");
+        my $ret = system("which $names[$i] >/dev/null 2>&1");
         my $status = $ret >> 8;
         if ($status == 0) {
             return $names[$i];
