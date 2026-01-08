@@ -36,7 +36,7 @@ For example:
    ...
    shell$ make -j 32 all && make install
    ...
-   shell$ readelf -d /opt/openmpi/lib/libmpi.so | egrep -i 'rpath|runpath'
+   shell$ readelf -d /opt/openmpi/lib/libmpi.so | grep -E -i 'rpath|runpath'
     0x000000000000001d (RUNPATH)            Library runpath: [/opt/openmpi/lib]
 
 The above output indicates that ``libmpi.so`` was built with "runpath"
@@ -44,7 +44,7 @@ support, whereas output like this:
 
 .. code::
 
-   shell$ readelf -d /opt/openmpi/lib/libmpi.so | egrep -i 'rpath|runpath'
+   shell$ readelf -d /opt/openmpi/lib/libmpi.so | grep -E -i 'rpath|runpath'
     0x000000000000000f (RPATH)              Library rpath: [/opt/openmpi/lib]
 
 indicates that ``libmpi.so`` was built with "rpath" support.

@@ -634,11 +634,11 @@ find $RPM_BUILD_ROOT -type f -o -type l | \
 # executables (no man pages, no doc files, no header files).  Do *not*
 # include wrapper compilers.
 cat all.files | \
-    egrep '/lib/|/lib64/|/lib32/|/bin/|/etc/|/help-' \
+    grep -E '/lib/|/lib64/|/lib32/|/bin/|/etc/|/help-' \
     > tmp.files | /bin/true
 # Snip out a bunch of executables (e.g., wrapper compilers, pkgconfig
 # files, .la and .a files) and docs
-egrep -vi 'bin/mpic|bin/mpif|bin/mpif77|bin/mpif90|pkgconfig|wrapper|\.mod$|\.la$|\.a$' tmp.files > runtime.files | /bin/true
+grep -E -vi 'bin/mpic|bin/mpif|bin/mpif77|bin/mpif90|pkgconfig|wrapper|\.mod$|\.la$|\.a$' tmp.files > runtime.files | /bin/true
 
 rm -f tmp.files
 
@@ -648,7 +648,7 @@ grep -v -f runtime.files all.files > remaining.files
 
 # Devel files.  Basically -- just exclude the man pages and doc files.
 cat remaining.files | \
-   egrep -v '/man/|/doc/' \
+   grep -E -v '/man/|/doc/' \
    > devel.files | /bin/true
 
 %endif

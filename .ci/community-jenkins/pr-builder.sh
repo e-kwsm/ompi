@@ -327,7 +327,7 @@ if test "${MPIRUN_MODE}" != "none"; then
     else
         echo "--> skipping mpif examples"
     fi
-    if ompi_info --parsable | egrep -q bindings:use_mpi:\"\?yes >/dev/null; then
+    if ompi_info --parsable | grep -E -q bindings:use_mpi:\"\?yes >/dev/null; then
         echo "--> running usempi examples"
         run_example "${exec}" ./examples/hello_usempi
         run_example "${singleton}" ./examples/hello_usempi

@@ -68,7 +68,7 @@ print join(" ", sort(@uniq));'
 }
 
 _get_mpirun_switches() {
-    mpirun --help 2>&1 | sed 's/^\s*//g' | egrep '^-' | cut -d' ' -f1 | tr '|\n' ' '
+    mpirun --help 2>&1 | sed 's/^\s*//g' | grep -E '^-' | cut -d' ' -f1 | tr '|\n' ' '
 }
 
 # get enumerator values for a variable
