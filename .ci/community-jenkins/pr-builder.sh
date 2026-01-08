@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (c) 2022-2023 Amazon.com, Inc. or its affiliates.  All rights
 #                         reserved.
