@@ -216,7 +216,7 @@ echo "--> Found tarball: $tarball"
 # get the extension from the tarball (gz or bz2)
 #
 
-extension=$(echo $tarball | egrep '\.bz2')
+extension=$(echo $tarball | grep -E '\.bz2')
 if test -n "$extension"; then
     extension=bz2
 else
@@ -377,7 +377,7 @@ sed -e 's/\$VERSION/'$version'/g' \
     -e 's/\$EXTENSION/'$extension'/g' \
     $specfile > "$specdest"
 echo "--> Created destination specfile: $specdest"
-release=$(egrep -i release: $specdest | cut -d\  -f2)
+release=$(grep -E -i release: $specdest | cut -d\  -f2)
 
 #
 # Setup compiler string
