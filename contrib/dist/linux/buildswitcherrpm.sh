@@ -52,9 +52,9 @@ fi
 #
 
 first="$(basename $tarball | cut -d- -f2)"
-if test "$(echo $first | fgrep .tar.gz)" != ""; then
+if test "$(echo $first | grep -F .tar.gz)" != ""; then
     version="$(echo $first | sed -e 's/\.tar\.gz//')"
-elif test "$(echo $first | fgrep .tar.bz2)" != ""; then
+elif test "$(echo $first | grep -F .tar.bz2)" != ""; then
     version="$(echo $first | sed -e 's/\.tar\.bz2//')"
 else
     echo Unable to determine version number from filename
