@@ -134,7 +134,7 @@ AC_DEFUN([OPAL_LOAD_PLATFORM], [
                     fi
 
                     AC_MSG_CHECKING([patch: $one_patch for unsupported configury changes ])
-                    has_configury_items=$(patch -d ${srcdir} -p1 -t --dry-run < ${one_patch} 2>&1 | egrep "^patching" | egrep  '*\.(am|m4)$' | wc -l)
+                    has_configury_items=$(patch -d ${srcdir} -p1 -t --dry-run < ${one_patch} 2>&1 | grep -E "^patching" | grep -E '*\.(am|m4)$' | wc -l)
 
                     if test $has_configury_items -ne 0; then
                         AC_MSG_RESULT([fail])
